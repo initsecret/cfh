@@ -13,7 +13,7 @@ properties.
    chosen string `x`, there is not efficient modification `M` such that `D(x,
    M(x))` is small but `S(H(x), H(M(x)))` is large.
 
-**Note:** A pedantic person, who for once is not me, can write the above
+**Note.** A pedantic person, who for once is not me, can write the above
 definition more formally using two epsilons.
 
 ### Explicit Examples (or Why I Care)
@@ -24,6 +24,14 @@ One can think of such a scheme being used to hash fingerprints. Currently, to
 the best of my knowledge, there is no open standard for fingerprint hashing. If
 such a scheme existed, we could use that. This is more generally applicable to
 biometric authentication.
+
+**Note.** Fingerprint authentication is easier as we can assume that the noise
+or the "fuzziness" is random and not adversarial. If we assume this, then we
+can use ideas from error correcting codes---namely, *decoding* error correcting
+codes---to construct a fuzzy hash. The key idea is to decode the input (under a
+suitable error correcting code) before hashing it with a cryptographic hash.
+These ideas, to the best of my knowledge, were first discussed in [Juels and
+Wattenberg (1999)](https://dl.acm.org/doi/10.1145/319709.319714).
 
 #### 2. CSAM Detection
 
