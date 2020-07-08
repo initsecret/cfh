@@ -47,6 +47,15 @@ Looks like a classic case of [security by
 obscurity](https://en.wikipedia.org/wiki/Security_through_obscurity) to me. An
 explicit construction would help us here.
 
+#### 3. The Right to Be Forgotten
+
+The GDPR includes a [Right to Erasure](https://gdpr-info.eu/art-17-gdpr/) but
+that doesn't stop people from re-uploading content you deleted. Suppose you
+uploaded some rude pictures of yourself as a public post on Facebook, and then
+deleted them. There does not seem to be an easy way for Facebook to prevent
+someone else uploading the same images back. Indeed, the threat model seems
+similar to the one for CSAM.
+
 ### Literature Review
 
 None of the articles I could find on the internet (e.g.,
