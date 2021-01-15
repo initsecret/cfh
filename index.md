@@ -88,9 +88,9 @@ relaxations.
    Ristenpart (ia.cr/2019/981)](https://ia.cr/2019/981) and ask the client to
    produce a zero-knowledge proof that they are sufficiently far away from any
    element in this set. In this setting, the zero-knowlege proofs plays the role
-   of the hash. This has the downside of requiring the client to have plaintext
-   access to the target set (which we really don't want in the CSAM setting!)
-   and also doesn't allow us to update the set and re-check.
+   of the hash. However, this has the downside of requiring the client to have
+   plaintext access to the target set (which we really don't want in the CSAM
+   setting!)
 2. Building on the above setting, if we assume that we have a fuzzy hash that is
    not cryptographically hiding but has the trivial similarity function (that
    is, `H(x)` and `H(y)` are similar if and only if `H(x)==H(y)`), then we can
@@ -99,7 +99,7 @@ relaxations.
    a database of CSAM indexed by the fuzzy hash. In this setting the database
    can be on a server and if we force all queries to use the private keyword
    search protocol, then we don't leak the plaintext hashes (assuming the hashes
-   are sufficiently hard to guess.t
+   are sufficiently hard to guess.)
 
 ### Moving Forward
 
