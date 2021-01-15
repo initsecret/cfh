@@ -106,15 +106,16 @@ relaxations.
 Here are some research questions.
 
 1. What is a good distance metric? As we observed above, Hamming distance
-   doesn't seem to be a good candidate. Edit distance seem to get over the
-   differences but it seems expensive to compute. Furthermore, there might be
-   better domain-specific hashes (like one for text, PNGs, JPEGs, etc.)
+   doesn't seem to be a good candidate. Edit distance seem to get over the issue
+   mentioned in the above section but it seems expensive to compute.
+   Furthermore, there might be better domain-specific hashes (like one for text,
+   PNGs, JPEGs, etc.)
 2. Can we relax the threat model for the explicit use cases? (See, for instance,
    the discussion in the above section.)
 3. What are the performance and storage considerations?
 4. And, obviously, how the fuck do we construct one of these?!
 
-### Contact
+### Get in Touch
 
 If you make progress on or are just interested in any of these problems, I would
 love to hear about it. You can find my contact details on [my
