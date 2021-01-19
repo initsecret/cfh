@@ -166,6 +166,13 @@ This construction seems to work [citation required] but it requires iO!
 
 **Conclusion 1.** iO rocks!
 
+#### 3. Construction from Functional Encryption
+
+Duh! But, again, one needs functional encryption. There seems to be a way to do
+functional encryption efficiently using SGX due [Fisch, Vinayagamurthy, Boneh,
+and Gorbunov (ia.cr/2016/1071)](https://ia.cr/2016/1071) but it requires SGX and
+I don't like or trust SGX (maybe I should, I dunno.)
+
 ### Moving Forward
 
 Here are some research questions.
