@@ -2,3 +2,4 @@ theme: jekyll-theme-merlot
 title: Cryptographic Fuzzy Hashing
 github:
     owner_name: sanketh
+    owner_url: https://snkth.com
