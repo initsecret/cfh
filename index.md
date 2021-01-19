@@ -14,8 +14,9 @@ properties.
    chosen string `x`, there is not efficient modification `M` such that `D(x,
    M(x))` is small but `S(H(x), H(M(x)))` is large.
 
-**Note.** A pedantic person, who for once is not me, can write the above
-definition more formally using two epsilons.
+**Note.** The above definition is clearly not formal, I used `256` instead of
+`n` and use phrases like "are about the same", but it shouldn't be too hard to
+formalize it with a bunch of parameters and a couple of epsilons.
 
 ### Explicit Examples (or Why I Care)
 
@@ -72,6 +73,12 @@ this definition or these properties explicitly. In fact, I found an article
 
 which shows how most fuzzy hashes fail under the naive random noise attack.
 
+A lot of people seem to be using
+[PhotoDNA](https://en.wikipedia.org/wiki/PhotoDNA) for CSAM Scanning but
+PhotoDNA is not public: [this NYTimes
+article](https://www.nytimes.com/interactive/2019/11/09/us/internet-child-sex-abuse.html)
+contains the best description of it that I've come across.
+
 ### Some Observations
 
 1. If you only care about bitflip errors, then piecewise hashing with a
@@ -100,6 +107,47 @@ relaxations.
    can be on a server and if we force all queries to use the private keyword
    search protocol, then we don't leak the plaintext hashes (assuming the hashes
    are sufficiently hard to guess.)
+
+### Failed Constructions
+
+#### 1. Construction from Fuzzy Hash for Numbers
+
+Suppse we had a cryptographic fuzzy hash for numbers, that is a hash `H` which
+maps a number to a hash and a similarity function `S` which takes two numbers
+and outputs a similarity score. Then we can consider the following naive
+construction.
+
+1. Pixelate the image to say 1920x1080 or fix some other common resolution
+2. Hash every pixel using the number hash
+
+The similarity score between two images could be the sum of the similarity
+scores for each of the pixels.
+
+Unfortunately, this doesn't work. For starters, each pixel is typically
+represented by 24 bits (24-bit color; 8 bits each for R, G, and B) or 32 bits
+(24-bit color plus 8 bits for alpha) and is easy to bruteforce. In other words,
+with approximately `(2^32) + (image size)` work one can recover the original
+image from the hash (`2^32` work to build a lookup table and `image size` work
+to query each pixel hash.)
+
+The second issue is that the similarity function can be used as a side-channel
+to leak information about the preimage. For example, if we had a 256-bit
+preimage, we can do binary search by hashing a value and using the similarity
+score to inform the branch we should take, and this attack should take
+approximately `256 * (image size)` work (`256` is `log(2^256)` and we need do
+the binary search for each pixel.)
+
+In conclusion, it seems like even with a fuzzy hash for numbers, it might be
+hard to construct this primitive.
+
+**Conclusion 1.** It doesn't seem easy to bootstrap a fuzzy hash for images from
+a fuzzy hash for numbers.
+
+**Conclusion 2.** We might need some sort of a secret to prevent brute force
+attacks. Like, if we had a secret, then we can FHE to compute `Enc(|a-b|)` from
+`Enc(a)` and `Enc(b)` where `Enc(a)` and `Enc(b)` are binding and irreversable
+but it doesn't seem trivial to get `|a-b|` from `Enc(|a-b|)`. Also, we don't
+need FHE or even multi-linear maps here, just linear maps.
 
 ### Moving Forward
 
