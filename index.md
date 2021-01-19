@@ -157,10 +157,19 @@ Here are some research questions.
    doesn't seem to be a good candidate. Edit distance seem to get over the issue
    mentioned in the above section but it seems expensive to compute.
    Furthermore, there might be better domain-specific hashes (like one for text,
-   PNGs, JPEGs, etc.)
+   PNGs, JPEGs, etc.) On a different note, the [NYTimes article linked
+   above](https://www.nytimes.com/interactive/2019/11/09/us/internet-child-sex-abuse.html)
+   suggests that PhotoDNA uses "visual features to generate the image’s
+   fingerprint." perhaps we can do something similar but this metric might make
+   things harder to prove.
 2. Can we relax the threat model for the explicit use cases? (See, for instance,
    the discussion in the above section.)
-3. What are the performance and storage considerations?
+3. What are the performance and storage considerations? If we wanted to, for
+   example, scan images server-side then we could take a couple of seconds per
+   image, but if we wanted to scan real-time video client-side then we need to
+   be faster. Similarly, if we are storing the database server-side then we can
+   take a few terabytes for the corpus, but we are storing it client-side we
+   probably can't use more than a few megabytes.
 4. And, obviously, how the fuck do we construct one of these?!
 
 ### Get in Touch
