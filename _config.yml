@@ -1,3 +1,4 @@
 theme: jekyll-theme-merlot
 title: Cryptographic Fuzzy Hashing
-author: sanketh
+github:
+    owner_name: sanketh
