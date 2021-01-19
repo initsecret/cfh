@@ -149,6 +149,23 @@ attacks. Like, if we had a secret, then we can FHE to compute `Enc(|a-b|)` from
 but it doesn't seem trivial to get `|a-b|` from `Enc(|a-b|)`. Also, we don't
 need FHE or even multi-linear maps here, just linear maps.
 
+#### 2. Construction from Obufuscation
+
+Building on Conclusion 2 from Failed Construction 1, how about we embed a secret
+key into the hash and similarity programs using obfuscation. So, let's try that.
+
+1. Pick a random secret key `sk`.
+2. Define hash `x` to be `Enc(x)` under `sk`; in other words, expose an
+   obfuscated function which maps `x` to `Enc(x)` under `sk`.
+3. Define the similarity between `Enc(x)` and `Enc(y)` to be `D(x,y)`; in other
+   words, expose an obfuscated function which takes `Enc(x)` and `Enc(y)`
+   encrypted under key `sk`, decrypts them using `sk`, and then returns the
+   similarity between the plaintexts, that is, `D(x,y)`.
+
+This construction seems to work [citation required] but it requires iO!
+
+**Conclusion 1.** iO rocks!
+
 ### Moving Forward
 
 Here are some research questions.
