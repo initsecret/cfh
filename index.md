@@ -1,3 +1,5 @@
+**Note (added Mar 30, 2021).** This document is now obsolete. Please see the [USENIX Security '21 paper](https://www.usenix.org/conference/usenixsecurity21/presentation/kulshrestha) by Anunay Kulshrestha and Jonathan Mayer (see, also, [my review](https://github.com/sgmenda/paper-notes/blob/main/2021/usenixsecurity21-kulshrestha.md) of the paper) for the state-of-the-art. You might also be interested in [the bibliography](https://snkth.com/aab/) I started maintaining on anti-abuse.
+
 A *cryptographic fuzzy hash* with respect to a distance metric `D: {0,1}^* x
 {0,1}^* -> [0,1]` is a tuple `(H, S)` of functions, termed the *fuzzy hash
 function* and *similarity function* respectively. satisfying the following
